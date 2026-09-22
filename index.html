@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vedavyas Vayalpadu — AI Engineer</title>
+<meta name="description" content="AI Engineer building reliable, production-grade LLM systems — agents, RAG, orchestration — on enterprise-grade engineering foundations.">
+<style>
+  :root{
+    --bg:#0a0a14; --bg2:#0d0d1c; --card:#12122099; --card2:#141428;
+    --line:#ffffff14; --text:#e8e8f0; --muted:#9a9ab0; --dim:#6f6f88;
+    --accent:#b794f6; --accent2:#8b5cf6; --pink:#e879a6; --green:#4ade80;
+    --radius:20px; --max:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(900px 500px at 80% -5%,#3b1d6e33,transparent),
+                     radial-gradient(700px 500px at 0% 10%,#1e2a7833,transparent);
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .grid-bg{position:fixed;inset:0;z-index:-1;
+    background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+    background-size:44px 44px;mask-image:radial-gradient(circle at 50% 30%,#000,transparent 75%)}
+
+  /* nav */
+  nav{position:sticky;top:16px;z-index:50;margin:16px auto 0;max-width:520px}
+  .navbar{display:flex;gap:22px;justify-content:center;align-items:center;
+    background:#12122099;border:1px solid var(--line);backdrop-filter:blur(12px);
+    padding:12px 22px;border-radius:16px;font-size:14px}
+  .navbar a{color:var(--muted);transition:.2s}
+  .navbar a:hover{color:var(--text)}
+
+  /* hero */
+  header{text-align:center;padding:70px 0 40px}
+  h1{font-size:clamp(40px,7vw,84px);font-weight:800;letter-spacing:-1px;
+    background:linear-gradient(90deg,#fff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tag{font-size:clamp(26px,4.4vw,46px);font-weight:800;margin-top:14px;letter-spacing:-.5px}
+  .tag span{color:var(--accent)}
+  .lede{max-width:640px;margin:22px auto 0;color:var(--muted);font-size:17px}
+  .btns{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+  .btn{padding:15px 30px;border-radius:12px;border:1px solid var(--line);
+    background:#1a1a3055;font-weight:600;transition:.2s;display:inline-flex;gap:8px;align-items:center}
+  .btn:hover{background:#26264a;transform:translateY(-2px)}
+  .btn.primary{background:linear-gradient(90deg,var(--accent2),var(--pink));border:none}
+  .pill{display:inline-flex;gap:8px;align-items:center;margin-top:28px;
+    background:#12281c;border:1px solid #ffffff14;color:#cfe;padding:9px 18px;border-radius:30px;font-size:13px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+
+  /* sections */
+  section{padding:60px 0}
+  .eyebrow{text-align:center;letter-spacing:3px;font-size:12px;color:var(--dim);text-transform:uppercase}
+  .h2{text-align:center;font-size:clamp(30px,5vw,46px);font-weight:800;margin-top:8px}
+  .h2 span{color:var(--accent)}
+  .sub{text-align:center;color:var(--muted);margin-top:10px}
+
+  /* bento */
+  .bento{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin-top:40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+  .card .kicker{font-size:13px;color:var(--dim);margin-bottom:10px}
+  .card h3{font-size:clamp(20px,2.4vw,28px);font-weight:800;letter-spacing:-.3px}
+  .card p{color:var(--muted);margin-top:10px}
+  .col{display:grid;gap:20px}
+  .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .chip{background:#1c1c34;border:1px solid var(--line);padding:8px 14px;border-radius:20px;font-size:13px;color:#d6d6ea;display:flex;gap:7px;align-items:center}
+  .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .quote{border-left:3px solid var(--accent2);padding-left:18px}
+  .quote .pink{color:var(--pink)}
+
+  /* experience */
+  .xp{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;margin-top:20px}
+  .xp h3{font-size:20px;font-weight:700}
+  .xp .when{color:var(--dim);font-size:14px;margin:4px 0 12px}
+  .xp p{color:var(--muted);font-size:15px}
+
+  /* projects */
+  .filters{display:flex;gap:10px;justify-content:center;margin-top:28px}
+  .filters button{background:#1c1c34;border:1px solid var(--line);color:var(--muted);padding:9px 20px;border-radius:20px;cursor:pointer;font-size:14px;transition:.2s}
+  .filters button.active{background:var(--accent);color:#160a2e;border-color:transparent;font-weight:600}
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.2s}
+  .proj:hover{transform:translateY(-4px);border-color:#ffffff28}
+  .proj.feat{grid-column:1/-1}
+  .badge{display:inline-block;background:#2a1e45;color:var(--accent);font-size:11px;letter-spacing:1px;padding:6px 12px;border-radius:20px;text-transform:uppercase}
+  .proj h3{font-size:clamp(22px,3vw,32px);font-weight:800;margin-top:14px}
+  .proj p{color:var(--muted);margin-top:12px;font-size:15px}
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px;max-width:420px}
+  .metric{background:#0f0f20;border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+  .metric b{font-size:26px;display:block}
+  .metric span{color:var(--dim);font-size:12px}
+
+  /* contact */
+  .contact{text-align:center;padding:80px 0}
+  .contact h2{font-size:clamp(30px,5vw,52px);font-weight:800;max-width:760px;margin:14px auto 0;letter-spacing:-.5px}
+  .contact h2 span{color:var(--accent)}
+  footer{border-top:1px solid var(--line);padding:26px 0;display:flex;justify-content:space-between;align-items:center;color:var(--dim);font-size:14px}
+  .social{display:flex;gap:14px}
+  .social a{width:38px;height:38px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;transition:.2s}
+  .social a:hover{background:#26264a}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;
+    background:var(--accent);color:#160a2e;padding:12px 22px;border-radius:12px;font-weight:600;transition:.3s;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:820px){.bento,.projects{grid-template-columns:1fr}.navbar{gap:14px;font-size:13px}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav><div class="navbar">
+  <a href="#home">Home</a><a href="#about">About</a><a href="#experience">Experience</a>
+  <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+</div></nav>
+
+<header id="home"><div class="wrap">
+  <h1>VEDAVYAS VAYALPADU</h1>
+  <div class="tag">Building the systems <span>behind reliable AI.</span></div>
+  <p class="lede">I build production AI — agent orchestration, retrieval, and the backend that turns
+    language models into products people actually use. Coming from 14 years of enterprise infrastructure,
+    I care most about the engineering after the demo works: making AI reliable, grounded, and safe at scale.</p>
+  <div class="btns">
+    <a class="btn" href="https://github.com/vyasdx" target="_blank">GitHub ↗</a>
+    <a class="btn primary" href="#" target="_blank">Resume ↗</a>
+  </div>
+  <div class="pill"><span class="dot"></span> AI Engineer · LLM Systems · Production Reliability</div>
+</div></header>
+
+<!-- ABOUT / BENTO -->
+<section id="about"><div class="wrap">
+  <div class="bento">
+    <div class="card">
+      <div class="kicker">What I work on</div>
+      <h3>I build AI systems where the hard part is the one after it works: reliable agents, grounded outputs, auditable decisions.</h3>
+      <p>Multi-agent orchestration, RAG pipelines, tool calling, structured outputs — with validation,
+         retry, and human-in-the-loop where the cost of being wrong is real.</p>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="kicker">Based in Bengaluru · comfortable across time zones</div>
+        <h3>Open to global teams and collaboration.</h3>
+      </div>
+      <div class="card" id="skills">
+        <div class="kicker">AI + backend + product</div>
+        <h3 style="font-size:22px">Core tech stack</h3>
+        <div class="stack">
+          <span class="chip">Anthropic Claude</span><span class="chip">Agents / MCP</span>
+          <span class="chip">RAG Pipelines</span><span class="chip">Python</span>
+          <span class="chip">FastAPI</span><span class="chip">TypeScript</span>
+          <span class="chip">Next.js</span><span class="chip">PostgreSQL</span>
+          <span class="chip">pgvector</span><span class="chip">Docker</span>
+          <span class="chip">AWS</span><span class="chip">Azure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento" style="margin-top:20px">
+    <div class="card">
+      <div class="kicker">What I care about</div>
+      <h3>AI systems designed for decisions, not just conversations.</h3>
+      <p>The model is one component. The product is the system around it — context assembly,
+         retrieval, validation, observability, and cost control. That's where reliability lives.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">How I work</div>
+      <div class="quote">
+        <h3 style="font-size:22px">I like understanding how the pieces connect — and where things quietly break.</h3>
+        <p>The fun part is <span class="pink">figuring things out</span>. New tools, unfamiliar systems,
+           weird production bugs — that's usually where I learn fastest. 14 years of L4/L5 incidents taught me:
+           agents don't fail loudly, they degrade silently. So you build the harness to catch it.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- EXPERIENCE -->
+<section id="experience"><div class="wrap">
+  <div class="eyebrow">Background</div>
+  <div class="h2">Work <span>Experience</span></div>
+
+  <div class="xp">
+    <h3>AI Engineer — Independent Builder</h3>
+    <div class="when">Remote · 2025 – Present</div>
+    <p>Design and ship production AI systems end to end — multi-agent orchestration, RAG with vector search,
+       tool calling, structured outputs — using Claude with AI-assisted development as the default workflow.
+       Four production products shipped in under 90 days, applying enterprise-grade engineering:
+       response validation, retry/fallback, human-in-the-loop guardrails, and security-first design.</p>
+  </div>
+
+  <div class="xp">
+    <h3>Senior Lead / SME, IT Solutions — Enterprise Infrastructure</h3>
+    <div class="when">2011 – Present · 14 years</div>
+    <p>L4/L5 escalation and Major Incident command across large-scale Linux, AIX, and cloud estates for global
+       enterprises. Chapter Lead for the UNIX Guild — mentoring engineers and driving best practices. This is
+       where the reliability-first instinct comes from: designing systems that stay up, fail gracefully, and recover fully.</p>
+  </div>
+</div></section>
+
+<!-- PROJECTS -->
+<section id="projects"><div class="wrap">
+  <div class="h2">Selected <span>Projects</span></div>
+  <p class="sub">Production-grade AI systems, built end to end.</p>
+
+  <div class="filters">
+    <button class="active" data-f="all">All</button>
+    <button data-f="ai">AI</button>
+    <button data-f="fs">Full Stack</button>
+  </div>
+
+  <div class="projects">
+    <div class="proj feat" data-t="ai">
+      <span class="badge">Featured Project</span>
+      <h3>Discipline-M — Real-Time Multi-Agent Trading Monitor</h3>
+      <p>A six-engine agentic system that watches every trade in real time and flags 12 behavioural patterns —
+         overtrading, revenge trading, stop-loss manipulation — across the full trade lifecycle. Human-in-the-loop
+         at every decision; nothing executes on its own. A validation layer on every model response cut schema drift
+         from ~3% to near-zero in production.</p>
+      <div class="stack">
+        <span class="chip">Multi-Agent</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
+        <span class="chip">PostgreSQL</span><span class="chip">AWS</span><span class="chip">Claude Sonnet</span>
+      </div>
+      <div class="metrics">
+        <div class="metric"><b>6</b><span>Coordinating Engines</span></div>
+        <div class="metric"><b>12</b><span>Behaviour Patterns</span></div>
+        <div class="metric"><b>~0%</b><span>Schema Drift (prod)</span></div>
+        <div class="metric"><b>41d</b><span>Zero to Live Pilot</span></div>
+      </div>
+    </div>
+
+    <div class="proj" data-t="ai">
+      <h3>VidyaSutra — Multilingual RAG Advisor</h3>
+      <p>Retrieval-augmented Q&A over 1,984 documents in 4 languages, with zero hallucination on canonical content
+         through grounded retrieval and exact-source citation. Embedding evaluation, semantic chunking, and
+         metadata-filtered retrieval.</p>
+      <div class="stack">
+        <span class="chip">RAG</span><span class="chip">Voyage AI</span><span class="chip">pgvector</span>
+        <span class="chip">React Native</span><span class="chip">Express</span>
+      </div>
+    </div>
+
+    <div class="proj" data-t="ai fs">
+      <h3>AppLens — Codebase Intelligence</h3>
+      <p>Static codebase-intelligence platform generating citation-tracked AI documentation and interactive
+         topology. Three-pass Claude pipeline with model routing and anti-hallucination guardrails — verbatim
+         quoting, inline citations, and a numeric-claims auditor.</p>
+      <div class="stack">
+        <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Fastify</span>
+        <span class="chip">Prisma</span><span class="chip">Claude API</span>
+      </div>
+    </div>
+
+    <div class="proj" data-t="ai fs">
+      <h3>Linux Diagnostic Tool</h3>
+      <p>Multi-platform analyzer that turns support archives into structured, severity-scored insight —
+         43 parsers across RHEL, SUSE, AIX, Ubuntu, and Oracle Linux, with Claude-enriched recommendations.
+         Hardened deployment with at-rest encryption and verifiable zero data exfiltration.</p>
+      <div class="stack">
+        <span class="chip">Python 3.12</span><span class="chip">Flask</span><span class="chip">Claude API</span>
+        <span class="chip">Docker</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact"><div class="wrap">
+  <div class="eyebrow">Contact</div>
+  <h2>Interested in <span>AI systems</span>, backend engineering, or building intelligent products together?</h2>
+  <p class="sub" style="max-width:600px;margin:16px auto 0">I'm always open to conversations around production AI,
+     reliability, and building useful technology.</p>
+  <div class="btns" style="margin-top:30px">
+    <button class="btn primary" onclick="copyEmail()">Copy my email ↗</button>
+    <a class="btn" href="https://github.com/vyasdx" target="_blank">GitHub ↗</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap" style="display:flex;justify-content:space-between;width:100%;align-items:center">
+  <span>© 2026 Vedavyas Vayalpadu</span>
+  <div class="social">
+    <a href="https://github.com/vyasdx" target="_blank" title="GitHub">GH</a>
+    <a href="https://linkedin.com/in/vedavyas-vayalpadu-b3a8811a" target="_blank" title="LinkedIn">in</a>
+  </div>
+</div></footer>
+
+<div class="toast" id="toast">Email copied ✓</div>
+
+<script>
+  // project filter
+  document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    const f=b.dataset.f;
+    document.querySelectorAll('.proj').forEach(p=>{
+      p.style.display = (f==='all'||p.dataset.t.includes(f))?'':'none';
+    });
+  });
+  // copy email
+  function copyEmail(){
+    navigator.clipboard.writeText('vyas4c3@gmail.com');
+    const t=document.getElementById('toast');t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),1800);
+  }
+</script>
+</body>
+</html>
